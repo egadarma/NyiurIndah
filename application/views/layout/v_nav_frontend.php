@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="../../index3.html" class="navbar-brand">
+      <a href="<?= base_url() ?>" class="navbar-brand">
         <i class='fas fa-store'></i>
         <span class="brand-text font-weight-light"><b>Nyiur Indah</b></span>
       </a>
@@ -14,42 +14,31 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="<?= base_url() ?>" class="nav-link">Home</a>
           </li>
+
+          <?php $kategori = $this->m_home->get_all_data_kategori(); ?>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kategori</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              
+              <?php foreach ($kategori as $key => $value) { ?>
+                <li><a href="<?= base_url('home/kategori/'. $value->id_kategori)?>" class="dropdown-item"><?= $value->nama_kategori?> </a></li>
+              <?php }?>
+              
+            
+            </ul>
+          </li>
+
           <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="<?= base_url() ?>" class="nav-link">Contact</a>
           </li>
+
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="#" class="dropdown-item">Some action </a></li>
               <li><a href="#" class="dropdown-item">Some other action</a></li>
-
-              <li class="dropdown-divider"></li>
-
-              <!-- Level two dropdown-->
-              <li class="dropdown-submenu dropdown-hover">
-                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                  <li>
-                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                  </li>
-
-                  <!-- Level three dropdown-->
-                  <li class="dropdown-submenu">
-                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                    </ul>
-                  </li>
-                  <!-- End Level three -->
-
-                  <li><a href="#" class="dropdown-item">level 2</a></li>
-                  <li><a href="#" class="dropdown-item">level 2</a></li>
-                </ul>
-              </li>
-              <!-- End Level two -->
             </ul>
           </li>
         </ul>
@@ -85,62 +74,56 @@
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
-
+        
+        <?php 
+          $keranjang = $this->cart->contents();
+          $jml_item = 0;
+          foreach ($keranjang as $key => $value) {
+            $jml_item = $jml_item + $value['qty'];
+          } 
+        ?>
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fas fa-shopping-cart"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
+            <span class="badge badge-danger navbar-badge"><?= $jml_item ?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
+          <!-- Barang Start -->
+          <?php foreach ($keranjang as $key => $value) { 
+            $barang = $this->m_home->detail_barang($value['id']);  
+          ?>
+            
             <a href="#" class="dropdown-item">
-              <!-- Message Start -->
               <div class="media">
-                <img src="<?=base_url() ?>template/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="<?=base_url('asset/images/' . $barang->gambar) ?>" alt="User Avatar" class="img-size-50 mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                    <?= $value['name'] ?>
                   </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                  <p class="text-sm"><?= $value['qty'] ?> x Rp.<?= number_format($value['price'], 0) ?></p>
+                  <p class="text-sm text-muted"><i class="fa fa-calculator"></i>Rp.<?= $this->cart->format_number($value['subtotal']);?></p>
                 </div>
               </div>
-              <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
+            <?php } ?>
+            <!-- Barang End -->
+            
             <a href="#" class="dropdown-item">
-              <!-- Message Start -->
               <div class="media">
-                <img src="<?=base_url() ?>template/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <tr>
+                    <td colspan="2"> </td>
+                    <td class="right"><strong>Total : </strong></td>
+                    <td class="right">Rp.<?= $this->cart->format_number($this->cart->total()); ?></td>
+                </tr>
                 </div>
               </div>
-              <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="<?=base_url() ?>template/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+            <a href="#" class="dropdown-item dropdown-footer">View Cart</a>
+            <a href="#" class="dropdown-item dropdown-footer">Check Out</a>
           </div>
         </li>
 
