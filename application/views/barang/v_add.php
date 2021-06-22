@@ -35,8 +35,13 @@
                   </div>
                   <div class="form-group">
                     <label>Harga</label>
-                    <input name='harga' class="form-control" placeholder="Harga Barang"  
+                    <input  name='harga' class="form-control" placeholder="Harga Barang"  
                     value="<?= set_value('harga')?>">
+                  </div>
+            <div class="form-group">
+                    <label>Berat(Gr)</label>
+                    <input type="number" name='berat' min="0" class="form-control" placeholder="Berat Dalam Satuan Gram"  
+                    value="<?= set_value('berat')?>">
                   </div>
                   <div class="form-group">
                     <label>Deskripsi</label>

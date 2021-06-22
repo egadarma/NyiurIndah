@@ -39,6 +39,11 @@
                     value="<?= $barang->harga?>">
                   </div>
                   <div class="form-group">
+                    <label>Berat(Gr)</label>
+                    <input type="number" name='berat' min="0" class="form-control" placeholder="Berat Dalam Satuan Gram"  
+                    value="<?= $barang->berat?>">
+                  </div>
+                  <div class="form-group">
                     <label>Deskripsi Barang</label>
                     <textarea name='deskripsi' class="form-control" rows="5" placeholder="Deskripsi Barang"><?= $barang->deskripsi ?></textarea>
                   </div>

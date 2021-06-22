@@ -25,6 +25,7 @@ class Barang extends CI_Controller {
         $this->form_validation->set_rules('nama_barang','Nama Barang','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('id_kategori','Kategori','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('harga','Harga','required',array('required' => '%s Harus Diisi !!!'));
+        $this->form_validation->set_rules('berat','Berat','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('deskripsi','Deskripsi','required',array('required' => '%s Harus Diisi !!!'));
 
         if ($this->form_validation->run() == TRUE) {
@@ -51,6 +52,7 @@ class Barang extends CI_Controller {
                     'nama_barang' => $this->input->post('nama_barang'),
                     'id_kategori' => $this->input->post('id_kategori'),
                     'harga' => $this->input->post('harga'),
+                    'berat' => $this->input->post('berat'),
                     'deskripsi' => $this->input->post('deskripsi'),
                     'gambar' => $upload_data['uploads']['file_name'],
                 );
@@ -73,6 +75,7 @@ class Barang extends CI_Controller {
         $this->form_validation->set_rules('nama_barang','Nama Barang','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('id_kategori','Kategori','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('harga','Harga','required',array('required' => '%s Harus Diisi !!!'));
+        $this->form_validation->set_rules('berat','Berat','required',array('required' => '%s Harus Diisi !!!'));
         $this->form_validation->set_rules('deskripsi','Deskripsi','required',array('required' => '%s Harus Diisi !!!'));
 
         if ($this->form_validation->run() == TRUE) {
@@ -108,6 +111,7 @@ class Barang extends CI_Controller {
                     'nama_barang' => $this->input->post('nama_barang'),
                     'id_kategori' => $this->input->post('id_kategori'),
                     'harga' => $this->input->post('harga'),
+                    'berat' => $this->input->post('berat'),
                     'deskripsi' => $this->input->post('deskripsi'),
                     'gambar' => $upload_data['uploads']['file_name'],
                 );
@@ -121,6 +125,7 @@ class Barang extends CI_Controller {
                 'nama_barang' => $this->input->post('nama_barang'),
                 'id_kategori' => $this->input->post('id_kategori'),
                 'harga' => $this->input->post('harga'),
+                'berat' => $this->input->post('berat'),
                 'deskripsi' => $this->input->post('deskripsi'),
             );
             $this->m_barang->edit($data);

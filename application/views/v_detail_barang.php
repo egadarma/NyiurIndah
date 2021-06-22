@@ -1,9 +1,26 @@
-<!-- Default box -->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="<?= base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= base_url() ?>template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  
+<header id="home" class="welcome-hero">
+<!--feature start -->
+<section id="feature" class="feature">
+			<div class="container">
+				<div class="section-header">
+					<h2>Detail Barang</h2>
+				</div><!--/.section-header-->
+				<div class="feature-content">
+					<!-- Default box -->
 <div class="card card-solid">
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-sm-6">
-              <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
               <div class="col-12">
                 <img src="<?= base_url('asset/images/' . $barang->gambar)?>" class="product-image" alt="Product Image">
               </div>
@@ -15,8 +32,8 @@
                 
               </div>
             </div>
-            <div class="col-12 col-sm-6">
-              <h3 class="my-3"><?= $barang->nama_barang?></h3><hr>
+            <div class="col-12 col-sm-6"><br>
+              <h3 class=><?= $barang->nama_barang?></h3><hr>
               <h5><?= $barang->nama_kategori?></h5><hr>
               <p><?= $barang->deskripsi ?></p>
 
@@ -51,46 +68,24 @@
                 </div>
                 <?php echo form_close(); ?>
 
-              <div class="mt-4 product-share">
-                <a href="#" class="text-gray">
-                  <i class="fab fa-facebook-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                  <i class="fab fa-twitter-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                  <i class="fas fa-envelope-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                  <i class="fas fa-rss-square fa-2x"></i>
-                </a>
-              </div>
 
             </div>
-          </div>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-      <!-- jQuery -->
+				</div>
+			</div><!--/.container-->
 
-<!-- SweetAlert2 -->
-<script src="<?= base_url() ?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
-<script src="<?= base_url() ?>template/dist/js/demo.js"></script>
-<script type="text/javascript">
-  $(function() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000
-    });
+		</section><!--/.feature-->
+		<!--feature end -->
 
-    $('.swalDefaultSuccess').click(function() {
-      Toast.fire({
-        icon: 'success',
-        title: 'Barang Berhasil Ditambahkan Ke Keranjang !!!'
-      })
-    });
-    });
-</script>
+    <!-- jQuery -->
+    <script src="<?= base_url() ?>template/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="<?= base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url() ?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url() ?>template/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?= base_url() ?>template/dist/js/demo.js"></script>
