@@ -142,6 +142,8 @@
 				</div><!-- /.carousel-inner-->
 
 			</div><!--/#header-carousel-->
+			</header><!--/.welcome-hero-->
+		<!--welcome-hero end -->
 
 
 <!--new-arrivals start -->

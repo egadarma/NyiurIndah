@@ -13,6 +13,7 @@
 <section id="feature" class="feature">
 			<div class="container">
 				<div class="section-header">
+        <br>
 					<h2>Detail Barang</h2>
 				</div><!--/.section-header-->
 				<div class="feature-content">

@@ -21,11 +21,9 @@
 				            <!-- Start Atribute Navigation -->
 				            <div class="attr-nav">
 				                <ul>
-				                	<li class="search">
+
+									<li class="search">
 				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
-				                	</li><!--/.search-->
-				                	<li class="nav-setting">
-				                		<a href="#"><span class="lnr lnr-cog"></span></a>
 				                	</li><!--/.search-->
 
 									<?php 
@@ -35,7 +33,6 @@
             $jml_item = $jml_item + $value['qty'];
           } 
         ?>
-
 				                    <li class="dropdown">
 				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
 				                            <span class="lnr lnr-cart"></span>
@@ -66,10 +63,10 @@
 				                                <span>Total: Rp.<?= $this->cart->format_number($this->cart->total()); ?></span><br><br>
 												<div class="row">
 													<div class="col-sm-6">
-													<a href="<?=base_url('belanja')?>" class="btn-cart pull-left" onclick="window.location.href='#'">view cart</a>
+													<a href="<?=base_url('belanja')?>" class="btn-cart pull-left">view cart</a>
 													</div>
 													<div class="col-sm-6">
-													<button class="btn-cart pull-right" onclick="window.location.href='#'">Check Out</button>
+													<a href="<?=base_url('belanja/che')?>" class="btn-cart pull-right" onclick="window.location.href='#'">Check Out</a>
 													</div>
 													</div>
 				                                
@@ -77,6 +74,35 @@
 										<?php } ?>									
 				                        </ul>
 				                    </li><!--/.dropdown-->
+											
+									<li>
+								<?php if ($this->session->userdata('email') == "") { ?>
+									<a class="nav-link" href="<?=base_url('pelanggan/register')?>">
+          <span class="brand-text font-weight-light">Login/Register</span>
+		  <img src="<?= base_url()?>template/dist/img/user1-128x128.jpg" alt="logo admin lte" class="brand-image img-circle elevation-3" style="opacity .8"  width="30px">
+        </a>
+								<?php }else{ ?>
+									<a class="nav-link" data-toggle="dropdown" href="#">
+          <span class="brand-text font-weight-light"><?= $this->session->userdata('username') ?></span>
+		  <img src="<?= base_url()?>asset/foto_pelanggan/user1-128x128.jpg" alt="logo admin lte" class="brand-image img-circle elevation-3" style="opacity .8"  width="30px">
+        </a>
+        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+          <li>
+          <a href="<?=base_url('pelanggan/akun')?>" class="dropdown-item">
+            <i class="lnr lnr-user mr-2"></i> Akun Saya
+          </a>
+		  </li>
+          
+          <li>
+          <a href="#" class="dropdown-item">
+            <i class="lnr lnr-cart mr-2"></i> Pesanan Saya
+          </a>
+          </li>
+		  <br>
+          <a href="<?=base_url('pelanggan/logout')?>" class="btn-danger text-center" style="float: center;min-width: 160px;">Logout</a>
+        </ul>
+		<?php } ?>
+      </li>
 				                </ul>
 				            </div><!--/.attr-nav-->
 				            <!-- End Atribute Navigation -->

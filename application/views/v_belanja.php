@@ -1,16 +1,19 @@
 <header id="home" class="welcome-hero">
 <!--feature start -->
 <section id="feature" class="feature">
+</header><!--/.welcome-hero-->
 			<div class="container">
 				<div class="section-header">
+                                <br>
+                                <br>
 					<h2>Keranjang Belanja</h2>
 				</div><!--/.section-header-->
 				<div class="feature-content">
-					<!-- Default box -->
 <div class="card card-solid">
     <div class="card-body pb-0">
         <div class="row">
         <div class="col-sm-12">
+					<!-- Default box -->
         <?php echo form_open('belanja/update'); ?>
 
 <table class="table" cellpadding="6" cellspacing="1" style="width:100%">
@@ -44,7 +47,7 @@ foreach ($this->cart->contents() as $items) {
                     'type' => 'number',
                     'class' => 'form-control'
                     )); ?></td>
-                <td><?php echo $items['name']; ?></td>
+                <td class="text-center"><?php echo $items['name']; ?></td>
                 <td class="text-center">Rp.<?php echo number_format($items['price'], 0); ?></td>
                 <td class="text-center"> <?= $berat?> gr</td>
                 <td class="text-center">Rp.<?php echo number_format($items['subtotal'], 0); ?></td>
@@ -70,7 +73,7 @@ foreach ($this->cart->contents() as $items) {
                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update Cart</button>
             
                     <a href="<?= base_url('belanja/clear') ?>" class="btn btn-danger"><i class="fa fa-recycle"></i> Clear Cart</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-check-square"></i> Check Out</a>
+                    <a href="<?= base_url('belanja/cekout') ?>" class="btn btn-success"><i class="fa fa-check-square"></i> Check Out</a>
                     <?php echo form_close(); ?>
                     <br>
         </div>

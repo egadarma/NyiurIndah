@@ -20,4 +20,32 @@ class Admin extends CI_Controller {
         );
         $this->load->view('layout/v_wrapper_backend',$data,FALSE);
 	}
+
+    public function setting()
+	{
+		$this->form_validation->set_rules('nama_toko','Nama Toko','required',array('required' => '%s Harus Diisi !!!'));
+		$this->form_validation->set_rules('kota','Kota','required',array('required' => '%s Harus Diisi !!!'));
+		$this->form_validation->set_rules('alamat_toko','Alamat Toko','required',array('required' => '%s Harus Diisi !!!'));
+		$this->form_validation->set_rules('no_tlp','No Telepon','required',array('required' => '%s Harus Diisi !!!'));
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'title' => 'Setting',
+                'setting' => $this->m_admin->data_setting(),
+                'isi' => 'v_setting'
+            );
+            $this->load->view('layout/v_wrapper_backend',$data,FALSE);
+        }else {
+            $data = array(
+                'id' => 1,
+                'lokasi' => $this->input->post('kota'),
+                'nama_toko' => $this->input->post('nama_toko'),
+                'alamat_toko' => $this->input->post('alamat_toko'),
+                'no_tlp' => $this->input->post('no_tlp'),
+            );
+            $this->m_admin->edit($data);
+            $this->session->set_flashdata('pesan', 'Setting Berhasil di Ganti');
+            redirect('admin/setting');
+        }
+	}
 }
